@@ -8,7 +8,7 @@ nltk.download('punkt')
 # The following lines are needed on the first run only
 from cdqa.utils.download import download_model  
 download_model('bert-squad_1.1')
-directory = '/home/antony/u4.3/cdQA/data'
+directory = './data'
 download_model('bert-squad_1.1', dir=directory)
 download_model('distilbert-squad_1.1', dir=directory)
 from cdqa.utils.filters import filter_paragraphs
