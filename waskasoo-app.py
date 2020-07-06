@@ -6,7 +6,7 @@ import nltk
 nltk.download('punkt')
 
 # The following lines are needed on the first run only
-from cdqa.utils.download import download_model  
+from cdqa.utils.download import download_squad, download_model  
 download_model('bert-squad_1.1')
 directory = './data'
 download_model('bert-squad_1.1', dir=directory)
