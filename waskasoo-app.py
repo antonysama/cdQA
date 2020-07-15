@@ -1,21 +1,27 @@
-#!/usr/bin/env python3
+#pip install -r 'requirements.txt'
+
 import streamlit as st
 import numpy as np
-import pandas as pd
+# took out download_bnpp_data from below
+# if these are in place they can be commented out?
+from cdqa.utils.download import download_squad, download_model 
+
 import nltk
 nltk.download('punkt')
+import pandas as pd
 
-# The following lines are needed on the first run only
-from cdqa.utils.download import download_squad, download_model  
+#if these are in place, the following 4 lines can be commented out?
 download_model('bert-squad_1.1')
-directory = './data'
+directory = '/home/antony/u6/cdQA/data'
+download_squad(dir=directory)
 download_model('bert-squad_1.1', dir=directory)
 download_model('distilbert-squad_1.1', dir=directory)
+
+from ast import literal_eval
 from cdqa.utils.filters import filter_paragraphs
 from cdqa.pipeline.cdqa_sklearn import QAPipeline
 from nltk import tokenize
 
-#read the csv text file
 def load_from_csv(file):
     df = pd.read_csv(file)
     df = df.rename(str.lower, axis='columns')
@@ -24,7 +30,6 @@ def load_from_csv(file):
     return df
 
 df = load_from_csv('./data/test.csv')
-
 #make sure bert_qa.joblib is the same directory (cdQA), if not move it here from data
 cdqa_pipeline = QAPipeline(reader='bert_qa.joblib')
 cdqa_pipeline.fit_retriever(df=df)
