@@ -1,6 +1,6 @@
-#pip install -r 'requirements.txt'
+# pip install -r 'requirements.txt'
 
-import streamlit as st
+# # import streamlit as st
 import numpy as np
 # took out download_bnpp_data from below
 # if these are in place they can be commented out?
@@ -34,7 +34,9 @@ df = load_from_csv('./data/test.csv')
 cdqa_pipeline = QAPipeline(reader='bert_qa.joblib')
 cdqa_pipeline.fit_retriever(df=df)
 
-querry=st.text_area('enter mssage','type')
-if st.button('analyze'):
-	message=cdqa_pipeline.predict(query=querry, n_predictions=2)
-	st.success(message)
+# querry=st.text_area('enter mssage','type')
+# if st.button('analyze'):
+
+querry='what do we do to open parks?'
+cdqa_pipeline.predict(query=querry, n_predictions=2)
+
