@@ -11,7 +11,7 @@ torch==1.4.0
 markdown==3.1.1
 tqdm==4.32.2
 wget==3.2
-sthttps://github.com/antonysama/cdQA.gitreamlit
+# streamlit
 nltk
 pandas-compat 
 pytorch_pretrained_bert
